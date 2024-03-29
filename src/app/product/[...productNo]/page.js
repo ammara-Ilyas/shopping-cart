@@ -2,8 +2,6 @@
 import React from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import data from "../../../../component/data/data";
-import Image from "next/image";
-
 function page() {
   // const pathname = usePathname();
   // const searchParams = useSearchParams();

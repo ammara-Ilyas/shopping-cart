@@ -1,13 +1,16 @@
-import { data } from "autoprefixer";
 import React, { useState } from "react";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 
 function Cart({ item, setItem }) {
+  const [totalPrice, setTotalPrice] = useState();
   const handleProductItemInc = (index) => {
     console.log("x", index);
     const updateItem = [...item];
     updateItem[index].quantity++;
+    updateItem[index].totalPrice =
+      updateItem[index].price * updateItem[index].quantity;
+
     setItem(updateItem);
   };
   const handleProductItemDec = (index) => {
@@ -15,6 +18,9 @@ function Cart({ item, setItem }) {
     if (item[index].quantity >= 1) {
       const updateItem = [...item];
       updateItem[index].quantity--;
+      updateItem[index].totalPrice =
+        updateItem[index].price * updateItem[index].quantity;
+
       setItem(updateItem);
     }
   };
@@ -27,12 +33,15 @@ function Cart({ item, setItem }) {
     setItem(updateItem);
   };
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
+    <div className=" w-3/4 mx-auto mt-20 bg-base-100 shadow-xl  p-4 transition flex overflow-hidden ">
       {item.length === 0 ? (
-        <p className="text-gray-600">Your cart is empty.</p>
+        <p className="text-gray-600 flex justify-center items-center">
+          <b>Your cart is empty.</b>
+        </p>
       ) : (
-        <div>
+        <div className="w-full ">
+          <h1 className="text-3xl font-bold mb-4 text-center">Your Cart</h1>
+
           {item.map((product, index) => (
             <div
               key={index}
@@ -44,22 +53,25 @@ function Cart({ item, setItem }) {
                   alt={product.title}
                   className="h-16 w-16 object-cover rounded"
                 />
+                <p>{product.totalPrice}</p>
                 <div>
                   <h2 className="text-lg font-bold">{product.title}</h2>
                   <p className="text-gray-600">Price: ${product.price}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 font-bold text-xl">
-                <CiSquarePlus onClick={() => handleProductItemInc(index)} />
-                {product.quantity}
-                <CiSquareMinus onClick={() => handleProductItemDec(index)} />
+              <div className="flex basis-1/3 justify-between pr-4">
+                <div className="flex items-center  gap-2 font-bold text-xl">
+                  <CiSquarePlus onClick={() => handleProductItemInc(index)} />
+                  {product.quantity}
+                  <CiSquareMinus onClick={() => handleProductItemDec(index)} />
+                </div>
+                <button
+                  className="text-red-600 font-semibold"
+                  onClick={() => deleteItem(index)}
+                >
+                  Remove
+                </button>
               </div>
-              <button
-                className="text-red-600 font-semibold"
-                onClick={() => deleteItem(index)}
-              >
-                Remove
-              </button>
             </div>
           ))}
           <div className="mt-8 flex justify-end flex-col">

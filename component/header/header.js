@@ -4,16 +4,23 @@ import logo from "../../image/logo.jpg";
 import Icon from "../../image/cart.jpg";
 
 function Header({ item, setIsPage }) {
-  console.log(item.length);
-  const [itemLength, setItemLength] = useState(item.length); // Initialize with 0
+  // const [itemLength, setItemLength] = useState(item.length);
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  // useEffect(() => {
-  //   if (item) {
-  //     // Update item length whenever the item prop changes
-  //     setItemLength(item.length);
-  //   }
-  // }, [item]);
-
+  const handlerCartPage = () => {
+    console.log("ok");
+    if (item.length === 0) {
+      console.log("empty");
+    } else {
+      let price = item.reduce(
+        (acc, priceItem) => acc + priceItem.totalPrice,
+        0
+      );
+      setTotalPrice(price);
+      console.log("price", totalPrice);
+    }
+    return setIsPage(false);
+  };
   return (
     <div>
       <nav className="border-4 flex justify-between px-16 py-3">
@@ -22,7 +29,7 @@ function Header({ item, setIsPage }) {
         </div>
         <div
           className="col-span-5 text-end border-blue-950 border-2 px-3 relative flex justify-center"
-          onClick={() => setIsPage(false)}
+          onClick={handlerCartPage}
         >
           <span className="bg-red-600 rounded-full absolute px-2 hover:bg-red-800 hover:text-white cursor-pointer">
             {item.length}

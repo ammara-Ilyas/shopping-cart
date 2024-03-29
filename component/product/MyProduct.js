@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import data from "../data/data";
-function Product({ handlerNum }) {
+function Product({ handlerAddtoCart }) {
   return (
     <div className="grid grid-cols-12 gap-4	border-red-200 justify-center max-w-7xl mx-auto place-content-center">
       {data &&
@@ -11,22 +11,24 @@ function Product({ handlerNum }) {
             className="card w-96 bg-base-100 shadow-xl col-span-4 p-4 transition"
             key={i}
           >
-            <figure>
+            <figure onClick={() => hanlerProductPage(item, i)}>
               <Image src={item.image} alt="pro" width={400} height={250} />
             </figure>
             <div className="card-body">
               <h2 className="card-title">{item.title}</h2>
-              <p>{item.description}</p>
-              <div className=" flex justify-between m-3">
+              <p className="p-5">
+                <b>{item.category}</b>
+              </p>
+              <div className=" flex justify-between mx-10 my-5">
                 <button className="bg-blue-700 p-2 hover:bg-blue-500">
-                  $ {item.price}
+                  Price:{item.price}$
                 </button>
                 <button className="bg-blue-700 p-3 hover:bg-blue-500">
-                  Success
+                  Rating:{item.rating.rate}
                 </button>
               </div>
               <button
-                onClick={() => handlerNum(item)}
+                onClick={() => handlerAddtoCart(item)}
                 className="bg-red-700 p-3 w-full hover:bg-red-500 active:bg-red-950 active:text-white"
               >
                 Add to cart

@@ -3,24 +3,7 @@ import Image from "next/image";
 import logo from "../../image/logo.jpg";
 import Icon from "../../image/cart.jpg";
 
-function Header({ item, setIsPage }) {
-  // const [itemLength, setItemLength] = useState(item.length);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  const handlerCartPage = () => {
-    console.log("ok");
-    if (item.length === 0) {
-      console.log("empty");
-    } else {
-      let price = item.reduce(
-        (acc, priceItem) => acc + priceItem.totalPrice,
-        0
-      );
-      setTotalPrice(price);
-      console.log("price", totalPrice);
-    }
-    return setIsPage(false);
-  };
+function Header({ length, handlerCartPage, setIsPage }) {
   return (
     <div>
       <nav className="border-4 flex justify-between px-16 py-3">
@@ -32,7 +15,7 @@ function Header({ item, setIsPage }) {
           onClick={handlerCartPage}
         >
           <span className="bg-red-600 rounded-full absolute px-2 hover:bg-red-800 hover:text-white cursor-pointer">
-            {item.length}
+            {length}
           </span>
           <Image src={Icon} alt="cart-icon" height={30} width={30} />
         </div>

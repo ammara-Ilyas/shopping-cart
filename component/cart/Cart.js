@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 
-function Cart({ item, setItem }) {
-  const [totalPrice, setTotalPrice] = useState();
+function Cart({ item, setItem, totalPrice, handlerPrice }) {
   const handleProductItemInc = (index) => {
     console.log("x", index);
     const updateItem = [...item];
     updateItem[index].quantity++;
     updateItem[index].totalPrice =
       updateItem[index].price * updateItem[index].quantity;
+    handlerPrice();
 
     setItem(updateItem);
   };
@@ -20,7 +20,7 @@ function Cart({ item, setItem }) {
       updateItem[index].quantity--;
       updateItem[index].totalPrice =
         updateItem[index].price * updateItem[index].quantity;
-
+      handlerPrice();
       setItem(updateItem);
     }
   };
@@ -53,13 +53,12 @@ function Cart({ item, setItem }) {
                   alt={product.title}
                   className="h-16 w-16 object-cover rounded"
                 />
-                <p>{product.totalPrice}</p>
                 <div>
                   <h2 className="text-lg font-bold">{product.title}</h2>
                   <p className="text-gray-600">Price: ${product.price}</p>
                 </div>
               </div>
-              <div className="flex basis-1/3 justify-between pr-4">
+              <div className="flex basis-1/4 justify-between pr-4">
                 <div className="flex items-center  gap-2 font-bold text-xl">
                   <CiSquarePlus onClick={() => handleProductItemInc(index)} />
                   {product.quantity}
@@ -75,7 +74,9 @@ function Cart({ item, setItem }) {
             </div>
           ))}
           <div className="mt-8 flex justify-end flex-col">
-            <p>price</p>
+            <p className="text-center font-bold text-2xl">
+              Total Price : {Math.round(totalPrice)}$
+            </p>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
               Checkout
             </button>

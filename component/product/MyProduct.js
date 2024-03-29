@@ -11,7 +11,7 @@ function Product({ handlerAddtoCart }) {
             className="card w-96 bg-base-100 shadow-xl col-span-4 p-4 transition"
             key={i}
           >
-            <figure onClick={() => hanlerProductPage(item, i)}>
+            <figure>
               <Image src={item.image} alt="pro" width={400} height={250} />
             </figure>
             <div className="card-body">

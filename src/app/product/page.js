@@ -6,10 +6,14 @@ import Product from "../../../component/product/MyProduct";
 function page() {
   const [item, setItem] = useState([]);
   const [ispage, setIsPage] = useState(true);
-  const [totalPrice, setTotalPrice] = useState("");
+  const [totalPrice, setTotalPrice] = useState();
 
+  const handlerPrice = () => {
+    let price = item.reduce((acc, priceItem) => acc + priceItem.totalPrice, 0);
+    setTotalPrice(price);
+    console.log("price", totalPrice);
+  };
   const handlerAddtoCart = (proItem) => {
-    // setItem((preItem) => [...preItem, i]);
     const findItem = item.find((data) => {
       return data === proItem;
     });
@@ -18,18 +22,35 @@ function page() {
     } else {
       item.push(proItem);
     }
-
     // setItem((prevItem) => [...prevItem, i]);
   };
-  const hanlerProductPage = (item, i) => {};
+  const handlerCartPage = () => {
+    console.log("ok");
+    if (item.length === 0) {
+      console.log("empty");
+    } else {
+      handlerPrice();
+    }
+    return setIsPage(false);
+  };
+
   return (
     <div>
-      <Navbar item={item} setIsPage={setIsPage} />
+      <Navbar
+        length={item.length}
+        handlerCartPage={handlerCartPage}
+        setIsPage={setIsPage}
+      />
 
       {ispage ? (
         <Product handlerAddtoCart={handlerAddtoCart} />
       ) : (
-        <Cart item={item} setItem={setItem} />
+        <Cart
+          item={item}
+          setItem={setItem}
+          handlerPrice={handlerPrice}
+          totalPrice={totalPrice}
+        />
       )}
     </div>
   );

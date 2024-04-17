@@ -7,7 +7,7 @@ function Cart() {
     useContext(CartDataContext);
 
   const handleProductItemInc = (index) => {
-    console.log("x", index);
+    // console.log("x", index);
     const updateItem = [...item];
     updateItem[index].quantity++;
     updateItem[index].totalPrice =
@@ -17,7 +17,7 @@ function Cart() {
     setItem(updateItem);
   };
   const handleProductItemDec = (index) => {
-    console.log(item[index].quantity);
+    // console.log(item[index].quantity);
     if (item[index].quantity >= 1) {
       const updateItem = [...item];
       updateItem[index].quantity--;
@@ -28,7 +28,7 @@ function Cart() {
     }
   };
   const deleteItem = (index) => {
-    console.log(index);
+    // console.log(index);
     const updateItem = item.slice();
     // console.log("pre", updateItem);
     updateItem.splice(index, 1);

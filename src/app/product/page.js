@@ -1,15 +1,13 @@
 "use client";
 import React, { useContext } from "react";
 import Navbar from "../../../component/layout/header";
-import Cart from "../../../component/widgets/CartCom";
 import Product from "../../../component/widgets/MyProduct";
-import { CartDataContext } from "../../../component/contextApi/CartContext";
+import Buttons from "../../../component/widgets/Buttons";
 function page() {
-  const { ispage } = useContext(CartDataContext);
-
   return (
     <div>
       <Navbar />
+      <Buttons />
       <Product />
       {/* {ispage ? <Product /> : <Cart />} */}
     </div>

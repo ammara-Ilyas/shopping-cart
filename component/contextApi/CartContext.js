@@ -11,7 +11,7 @@ const CartContext = ({ children }) => {
   const handlerPrice = () => {
     let price = item.reduce((acc, priceItem) => acc + priceItem.totalPrice, 0);
     setTotalPrice(price);
-    console.log("price", totalPrice);
+    // console.log("price", totalPrice);
   };
   const handlerAddtoCart = (proItem) => {
     const findItem = item.find((data) => {
@@ -25,7 +25,6 @@ const CartContext = ({ children }) => {
     // setItem((prevItem) => [...prevItem, i]);
   };
   const handlerCartPage = () => {
-    console.log("ok");
     if (item.length === 0) {
       console.log("empty");
     } else {

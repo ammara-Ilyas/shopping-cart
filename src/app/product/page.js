@@ -1,57 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Navbar from "../../../component/layout/header";
-import Cart from "../../../component/widgets/cart/CartCom";
-import Product from "../../../component/widgets/product/MyProduct";
+import Cart from "../../../component/widgets/CartCom";
+import Product from "../../../component/widgets/MyProduct";
+import { CartDataContext } from "../../../component/contextApi/CartContext";
 function page() {
-  const [item, setItem] = useState([]);
-  const [ispage, setIsPage] = useState(true);
-  const [totalPrice, setTotalPrice] = useState();
-
-  const handlerPrice = () => {
-    let price = item.reduce((acc, priceItem) => acc + priceItem.totalPrice, 0);
-    setTotalPrice(price);
-    console.log("price", totalPrice);
-  };
-  const handlerAddtoCart = (proItem) => {
-    const findItem = item.find((data) => {
-      return data === proItem;
-    });
-    if (findItem) {
-      alert("already exist");
-    } else {
-      item.push(proItem);
-    }
-    // setItem((prevItem) => [...prevItem, i]);
-  };
-  const handlerCartPage = () => {
-    console.log("ok");
-    if (item.length === 0) {
-      console.log("empty");
-    } else {
-      handlerPrice();
-    }
-    return setIsPage(false);
-  };
+  const { ispage } = useContext(CartDataContext);
 
   return (
     <div>
-      <Navbar
-        length={item.length}
-        handlerCartPage={handlerCartPage}
-        setIsPage={setIsPage}
-      />
+      <Navbar />
 
-      {ispage ? (
-        <Product handlerAddtoCart={handlerAddtoCart} />
-      ) : (
-        <Cart
-          item={item}
-          setItem={setItem}
-          handlerPrice={handlerPrice}
-          totalPrice={totalPrice}
-        />
-      )}
+      {ispage ? <Product /> : <Cart />}
     </div>
   );
 }

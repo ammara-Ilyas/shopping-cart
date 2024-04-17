@@ -1,8 +1,9 @@
 "use client";
+import Cart from "../../../component/widgets/CartCom";
 function page() {
   return (
     <>
-      <h1>Hello</h1>
+      <Cart />
     </>
   );
 }

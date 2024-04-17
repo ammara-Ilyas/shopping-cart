@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
+import { CartDataContext } from "../contextApi/CartContext";
+function Cart() {
+  const { item, setItem, totalPrice, handlerPrice } =
+    useContext(CartDataContext);
 
-function Cart({ item, setItem, totalPrice, handlerPrice }) {
   const handleProductItemInc = (index) => {
     console.log("x", index);
     const updateItem = [...item];

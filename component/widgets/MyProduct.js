@@ -1,8 +1,11 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
-import data from "../../data/data";
-function Product({ handlerAddtoCart }) {
+import data from "../data/data";
+import { CartDataContext } from "../contextApi/CartContext";
+function Product() {
+  const { handlerAddtoCart } = useContext(CartDataContext);
+
   return (
     <div className="grid grid-cols-12 gap-4	border-red-200 justify-center max-w-7xl mx-auto place-content-center">
       {data &&

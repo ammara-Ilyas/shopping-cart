@@ -10,8 +10,8 @@ function page() {
   return (
     <div>
       <Navbar />
-
-      {ispage ? <Product /> : <Cart />}
+      <Product />
+      {/* {ispage ? <Product /> : <Cart />} */}
     </div>
   );
 }

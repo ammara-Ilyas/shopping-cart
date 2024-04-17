@@ -6,7 +6,7 @@ import Icon from "../../image/cart.jpg";
 function Header({ length, handlerCartPage, setIsPage }) {
   return (
     <div>
-      <nav className="border-4 flex justify-between px-16 py-3">
+      <nav className="border-4 flex justify-between px-16 py-3 sticky top-0">
         <div className="col-span-2" onClick={() => setIsPage(true)}>
           <Image src={logo} alt="logo" height={50} width={50} />
         </div>

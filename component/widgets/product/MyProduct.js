@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import data from "../data/data";
+import data from "../../data/data";
 function Product({ handlerAddtoCart }) {
   return (
     <div className="grid grid-cols-12 gap-4	border-red-200 justify-center max-w-7xl mx-auto place-content-center">

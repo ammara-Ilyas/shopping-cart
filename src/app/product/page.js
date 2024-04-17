@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Navbar from "../../../component/header/header";
-import Cart from "../../../component/cart/Cart";
-import Product from "../../../component/product/MyProduct";
+import Navbar from "../../../component/layout/header";
+import Cart from "../../../component/widgets/cart/CartCom";
+import Product from "../../../component/widgets/product/MyProduct";
 function page() {
   const [item, setItem] = useState([]);
   const [ispage, setIsPage] = useState(true);

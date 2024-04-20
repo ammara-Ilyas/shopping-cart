@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import logo from "../../image/logo.jpg";
@@ -12,7 +13,7 @@ function Header() {
     setCartNo(item.length);
   }, [item]);
   return (
-    <div>
+    <>
       <nav className="border-4 flex justify-between px-16 py-3 duration-75 sticky top-0 z-40 bg-slate-50">
         <div className="col-span-2" onClick={() => setIsPage(true)}>
           <Link href="/product">
@@ -31,7 +32,7 @@ function Header() {
           </Link>
         </div>
       </nav>
-    </div>
+    </>
   );
 }
 

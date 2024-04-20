@@ -4,12 +4,12 @@ import Image from "next/image";
 import data from "../data/data";
 import { CartDataContext } from "../contextApi/CartContext";
 function Product() {
-  const { handlerAddtoCart } = useContext(CartDataContext);
+  const { handlerAddtoCart, dataList } = useContext(CartDataContext);
 
   return (
     <div className="grid grid-cols-12 gap-4	border-red-200 justify-center max-w-7xl mx-auto place-content-center">
-      {data &&
-        data.map((item, i) => (
+      {dataList &&
+        dataList.map((item, i) => (
           <div
             className="card w-96 bg-base-100 shadow-xl col-span-4 p-4 transition"
             key={i}

@@ -1,10 +1,12 @@
 "use client";
 import React, { createContext, useState } from "react";
+import data from "../data/data";
 
 export const CartDataContext = React.createContext();
 
 const CartContext = ({ children }) => {
   const [item, setItem] = useState([]);
+  const [dataList, setDataList] = useState(data);
   const [totalPrice, setTotalPrice] = useState();
   const [ispage, setIsPage] = useState(true);
 
@@ -39,6 +41,8 @@ const CartContext = ({ children }) => {
           item,
           setItem,
           totalPrice,
+          dataList,
+          setDataList,
           ispage,
           setIsPage,
           setTotalPrice,

@@ -1,5 +1,4 @@
-"use client";
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import Navbar from "../../../component/layout/header";
 import Product from "../../../component/widgets/MyProduct";
 import Buttons from "../../../component/widgets/Buttons";
